@@ -10,4 +10,8 @@ urlpatterns = [
     path('active_account/<uidb4>/<token>/', views.active_account, name='active_account'),
     #/auth/login/
     path('login/', views.login, name='login'),
+    #/auth/logout_user/
+    path('logout_user/', views.logout_user, name='logout_user'),
+    #/auth/validate_login_data/
+    path('validate_login_data/', views.validate_login_data, name='validate_login_data'),
 ]

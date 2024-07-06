@@ -1,7 +1,29 @@
-{% if messages %}
-    {% for message in messages %}
-        {{ message }}
-    {% endfor %}
-{% endif %}
+{% extends 'base_templates/authentication_base.html' %}
+{% load static %}
+{% block 'title' %}EDIV | Entrar{% endblock %}
 
-<h1>LOGIN</h1>
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'autenticacao/css/css.css' %}">
+{% endblock %}
+
+{% block 'body' %}
+    <div class="container">
+        <div>
+            {% if messages %}
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="box">
+            <form action="{% url 'validate_login_data' %}" method="POST">{% csrf_token %}
+                <h2>Entrar</h2>
+                <hr>
+                {{ auth_form.as_p }}
+
+                <input type="submit" class="btn btn-main" value="Entrar">
+            </form>
+        </div>
+    </div>
+{% endblock %}
