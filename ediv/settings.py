@@ -1,4 +1,5 @@
 from pathlib import Path
+from decouple import config
 import os
 import sys
 
@@ -19,7 +20,7 @@ SECRET_KEY = 'django-insecure-k4u+q7zjbdxk6#ef@^@myxms$81i^1**c-u-gua6ri1x(vlsoq
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+DOMAIN = config('DOMAIN', cast=str)
 
 # Application definition
 
@@ -130,3 +131,11 @@ AUTH_USER_MODEL = 'autenticacao.Users'
 AUTHENTICATION_BACKENDS = (
     'autenticacao.backends.CustomBackend',
 )
+
+# E-MAIL
+
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    #TODO: configurar envio de e-mails
+    pass

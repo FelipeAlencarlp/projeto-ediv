@@ -12,9 +12,14 @@ def validate_registration_data(request: HttpRequest) -> HttpResponse:
         register_form = RegisterUserForm(request.POST)
 
         if register_form.is_valid():
-            register_form.save()
+            new_form = register_form.save(commit=False)
+            new_form.is_active = False
+            new_form.save()
 
             return HttpResponse('salvo')
 
         return render(request, 'register.html', {'register_form': register_form})
 
+
+def active_account(request: HttpRequest, uidb4, token):
+    return HttpResponse(token)
