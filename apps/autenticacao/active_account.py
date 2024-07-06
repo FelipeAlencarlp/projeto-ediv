@@ -14,7 +14,7 @@ class ActiveAccount:
             raise ValueError('user deve ser obrigatóriamente uma instância de Users!')
         self._user = user
 
-    def _generate_url(self):
+    def _generate_url(self) -> str:
         protocol = 'http' if settings.DEBUG else 'https'
         domain = settings.DOMAIN
         uid = urlsafe_base64_encode(force_bytes(self._user.pk))
