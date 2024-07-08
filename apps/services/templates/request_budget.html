@@ -1,0 +1,10 @@
+{% extends 'base_templates/general_base.html' %}
+
+{% block 'body' %}
+    <div class="container">
+        <form action="{% url 'request_budget' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+            <input type="file" name="file" />
+            <input type="submit" value="Enviar" />
+        </form>
+    </div>
+{% endblock %}
