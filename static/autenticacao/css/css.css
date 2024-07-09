@@ -1,0 +1,14 @@
+.box{
+    background-color: var(--dark-color);
+    padding: 40px;
+    width: 60%;
+    color: white;
+    margin: 30px auto;
+    box-shadow: 1px 1px 10px var(--main-color);
+    border-radius: 20px;
+}
+
+.btn-main{
+    background-color: var(--main-color) !important;
+    color: white !important;
+}
