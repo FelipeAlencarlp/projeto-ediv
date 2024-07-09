@@ -10,6 +10,4 @@ class Budgets(models.Model):
     status = models.CharField(max_length=2, choices=BudgetStatus.choices, default=BudgetStatus.SOLICITADO)
     service_tag = models.CharField(max_length=2, choices=ServiceTags.choices)
     descricao = tinymce_models.HTMLField()
-
-
-
+    file_path = models.CharField(max_length=300)

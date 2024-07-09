@@ -3,14 +3,27 @@
 
 {% block 'body' %}
     <div class="container">
-        <form action="{% url 'request_budget' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+        <div>
+            {% if messages %}
             <br>
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <form action="{% url 'request_budget' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
             <br>
             <input type="file" name="file" />
             <br>
             <br>
-            {{ HTML_FIELD|safe }}
+            <select name="service" class="form-select">
+                {% for service in services %}
+                    <option value="{{ service.0 }}">{{ service.1 }}</option>
+                {% endfor %}
+            </select>
             <br>
+            {{ HTML_FIELD|safe }}
             <br>
             <input type="submit" value="Enviar" />
         </form>
