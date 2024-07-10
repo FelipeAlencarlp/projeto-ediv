@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     #OtherApps
     'tinymce',
+    'rolepermissions',
 ]
 
 MIDDLEWARE = [
@@ -156,3 +157,7 @@ if DEBUG:
 else:
     #TODO: configurar envio de e-mails
     pass
+
+# Role permissions
+
+ROLEPERMISSIONS_MODULE = 'ediv.roles'
