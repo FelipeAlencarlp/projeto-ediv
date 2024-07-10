@@ -14,11 +14,13 @@ from .models import Budgets
 
 class BudgetRequestView(View):
 
+    @staticmethod
     def get(request: HttpRequest) -> HttpResponse:
         HTML_FIELD = TinyMCE().render(name='descricao', value='', attrs={'id': 'id_descricao'})
         return render(request, 'request_budget.html', {'HTML_FIELD': HTML_FIELD,
                                                        'services': ServiceTags.choices})
-
+    
+    @staticmethod
     def post(request: HttpRequest) -> HttpResponse:
         file = request.FILES.get('file')
         service = request.POST.get('service')
